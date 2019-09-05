@@ -7,6 +7,9 @@ interface TransactionExplorer : Purchases {
     @JsName("getTransaction")
     fun getTransaction(txId: String): CallResponse<Transaction>
 
+    @JsName("getTransactionByAddress")
+    fun getTransactionByAddress(owner: String, txId: String): CallResponse<Transaction>
+
     @JsName("getNumberOfTransactions")
     fun getNumberOfTransactions(): CallResponse<String>
 
