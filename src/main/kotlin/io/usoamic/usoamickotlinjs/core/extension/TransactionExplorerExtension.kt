@@ -24,7 +24,7 @@ fun TransactionExplorer.getTransactionsByAddress(owner: String, lastId: Long?, c
     getNumberOfTransactionsByAddress(owner).call(option).then {
         val numberOfTx = it.toLong()
         val factLastId = if(lastId == null) numberOfTx else min((lastId + 1), numberOfTx)
-        if(factLastId > 0.toLong()) {
+        if(factLastId > 0) {
             iterateTransactions(option, mutableListOf(), owner, 0, factLastId, callback)
         }
         else {
