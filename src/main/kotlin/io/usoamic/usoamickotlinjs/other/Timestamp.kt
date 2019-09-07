@@ -18,7 +18,7 @@ class Timestamp(number: BigNumber) {
         return Date(toMilliseconds().toString().toLong())
     }
 
-    fun toDateString(): String {
-        return toDate().toDateString()
+    fun toLocaleString(): String {
+        return toDate().toLocaleString()
     }
 }
