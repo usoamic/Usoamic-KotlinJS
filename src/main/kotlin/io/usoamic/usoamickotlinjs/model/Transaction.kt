@@ -1,6 +1,5 @@
 package io.usoamic.usoamickotlinjs.model
 
-import io.usoamic.usoamickotlinjs.other.Timestamp
 import io.usoamic.web3kt.bignumber.BigNumber
 import io.usoamic.web3kt.core.contract.util.Coin
 
@@ -10,7 +9,7 @@ data class Transaction constructor(
     val from: String,
     val to: String,
     val value: BigNumber,
-    val timestamp: Timestamp
+    val timestamp: BigNumber
 ) {
     class Builder {
         private var isExist: Boolean = false
@@ -18,7 +17,7 @@ data class Transaction constructor(
         private lateinit var from: String
         private lateinit var to: String
         private lateinit var value: BigNumber
-        private lateinit var timestamp: Timestamp
+        private lateinit var timestamp: BigNumber
 
         fun setExist(isExist: Boolean) = apply {
             this.isExist = isExist
@@ -41,7 +40,7 @@ data class Transaction constructor(
         }
 
         fun setTimestamp(timestamp: BigNumber) = apply {
-            this.timestamp = Timestamp(timestamp)
+            this.timestamp = timestamp
         }
 
         fun build() = Transaction(
