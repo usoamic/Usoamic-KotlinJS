@@ -1,17 +1,17 @@
 package io.usoamic.usoamickotlinjs.core.extension
 
 import io.usoamic.usoamickotlinjs.core.TransactionExplorer
-import io.usoamic.usoamickotlinjs.model.Transaction
+import io.usoamic.usoamickotlinjs.model.Transfer
 import io.usoamic.web3kt.core.contract.model.CallOption
 import kotlin.math.min
 
 private fun TransactionExplorer.iterateTransactions(
     option: CallOption,
-    list: MutableList<Transaction>,
+    list: MutableList<Transfer>,
     owner: String,
     id: Long,
     lastId: Long,
-    callback: (list: MutableList<Transaction>, t: Throwable?, needLoad: Boolean) -> Unit
+    callback: (list: MutableList<Transfer>, t: Throwable?, needLoad: Boolean) -> Unit
 ) {
     getTransactionByAddress(owner, id.toString()).call(option)
         .then { tx ->
@@ -32,7 +32,7 @@ fun TransactionExplorer.getTransactionsByAddress(
     owner: String,
     maxTx: Long,
     loadedLastId: Long,
-    callback: (list: MutableList<Transaction>, t: Throwable?, hasUpdate: Boolean) -> Unit
+    callback: (list: MutableList<Transfer>, t: Throwable?, hasUpdate: Boolean) -> Unit
 ) {
     val option = CallOption(from = owner)
 

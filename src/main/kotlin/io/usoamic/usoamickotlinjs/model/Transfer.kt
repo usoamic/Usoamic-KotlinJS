@@ -3,7 +3,8 @@ package io.usoamic.usoamickotlinjs.model
 import io.usoamic.web3kt.bignumber.BigNumber
 import io.usoamic.web3kt.core.contract.util.Coin
 
-data class Transaction constructor(
+data class Transfer constructor(
+    @JsName("exist")
     val isExist: Boolean,
     val txId: BigNumber,
     val from: String,
@@ -43,7 +44,7 @@ data class Transaction constructor(
             this.timestamp = timestamp
         }
 
-        fun build() = Transaction(
+        fun build() = Transfer(
             isExist,
             txId,
             from,
