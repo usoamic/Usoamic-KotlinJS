@@ -9,4 +9,10 @@ interface Owner : ContractWrapper {
 
     @JsName("setOwner")
     fun setOwner(newOwner: String): ExecuteResponse
+
+    @JsName("getOwner")
+    fun getOwner(): ExecuteResponse
+
+    @JsName("getFrozen")
+    fun getFrozen(): ExecuteResponse
 }
