@@ -1,6 +1,7 @@
 package io.usoamic.usoamickotlinjs.core
 
 import io.usoamic.web3kt.core.contract.other.ContractWrapper
+import io.usoamic.web3kt.core.contract.response.CallResponse
 import io.usoamic.web3kt.core.contract.response.ExecuteResponse
 
 interface Owner : ContractWrapper {
@@ -11,8 +12,8 @@ interface Owner : ContractWrapper {
     fun setOwner(newOwner: String): ExecuteResponse
 
     @JsName("getOwner")
-    fun getOwner(): ExecuteResponse
+    fun getOwner(): CallResponse<String>
 
     @JsName("getFrozen")
-    fun getFrozen(): ExecuteResponse
+    fun getFrozen(): CallResponse<Boolean>
 }
