@@ -16,7 +16,7 @@ buildscript {
 }
 
 allprojects {
-    group = "io.usoamic.usoamickotlinjs"
+    group = "io.usoamic"
     version = "1.0.7"
 }
 
