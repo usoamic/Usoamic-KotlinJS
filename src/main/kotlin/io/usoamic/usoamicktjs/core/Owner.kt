@@ -1,4 +1,4 @@
-package io.usoamic.usoamickotlinjs.core
+package io.usoamic.usoamicktjs.core
 
 import io.usoamic.web3kt.core.contract.other.ContractWrapper
 import io.usoamic.web3kt.core.contract.response.CallResponse

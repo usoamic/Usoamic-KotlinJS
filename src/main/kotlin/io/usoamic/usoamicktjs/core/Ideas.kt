@@ -1,8 +1,8 @@
-package io.usoamic.usoamickotlinjs.core
+package io.usoamic.usoamicktjs.core
 
-import io.usoamic.usoamickotlinjs.enumcls.IdeaStatus
-import io.usoamic.usoamickotlinjs.model.Idea
-import io.usoamic.usoamickotlinjs.model.Vote
+import io.usoamic.usoamicktjs.enumcls.IdeaStatus
+import io.usoamic.usoamicktjs.model.Idea
+import io.usoamic.usoamicktjs.model.Vote
 import io.usoamic.web3kt.core.contract.response.CallResponse
 import io.usoamic.web3kt.core.contract.response.ExecuteResponse
 

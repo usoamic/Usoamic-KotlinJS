@@ -1,7 +1,7 @@
-package io.usoamic.usoamickotlinjs.core.extension
+package io.usoamic.usoamicktjs.core.extension
 
-import io.usoamic.usoamickotlinjs.core.TransactionExplorer
-import io.usoamic.usoamickotlinjs.model.Transfer
+import io.usoamic.usoamicktjs.core.TransactionExplorer
+import io.usoamic.usoamicktjs.model.Transfer
 import io.usoamic.web3kt.core.contract.model.CallOption
 import kotlin.math.min
 

@@ -1,8 +1,8 @@
-package io.usoamic.usoamickotlinjs.other
+package io.usoamic.usoamicktjs.other
 
-import io.usoamic.usoamickotlinjs.enumcls.NetworkType
-import io.usoamic.usoamickotlinjs.exception.NodeProviderNotFound
-import io.usoamic.usoamickotlinjs.enumcls.NodeProvider
+import io.usoamic.usoamicktjs.enumcls.NetworkType
+import io.usoamic.usoamicktjs.exception.NodeProviderNotFound
+import io.usoamic.usoamicktjs.enumcls.NodeProvider
 
 object Node {
     fun by(networkType: NetworkType, nodeProvider: NodeProvider): String {

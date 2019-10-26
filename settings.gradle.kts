@@ -1,4 +1,4 @@
-rootProject.name = "usoamic-kotlinjs"
+rootProject.name = "usoamicktjs"
 
 pluginManagement {
     resolutionStrategy {

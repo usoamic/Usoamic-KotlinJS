@@ -1,4 +1,4 @@
-package io.usoamic.usoamickotlinjs.model
+package io.usoamic.usoamicktjs.model
 
 import io.usoamic.web3kt.bignumber.BigNumber
 

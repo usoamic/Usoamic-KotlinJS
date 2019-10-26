@@ -1,6 +1,6 @@
-package io.usoamic.usoamickotlinjs.core
+package io.usoamic.usoamicktjs.core
 
-import io.usoamic.usoamickotlinjs.model.Note
+import io.usoamic.usoamicktjs.model.Note
 import io.usoamic.web3kt.core.contract.response.CallResponse
 import io.usoamic.web3kt.core.contract.response.ExecuteResponse
 
