@@ -7,4 +7,8 @@ data class Account(
     val path: String,
     val name: String,
     val timestamp: BigNumber
-)
+) {
+    companion object {
+        const val ACCOUNT: String = "account.json"
+    }
+}
