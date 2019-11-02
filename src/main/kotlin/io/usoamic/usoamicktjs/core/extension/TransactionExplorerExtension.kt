@@ -39,11 +39,11 @@ fun TransactionExplorer.getTransactionsByAddress(
     getNumberOfTransactionsByAddress(owner).call(option)
         .then {
             val factLastId = min(maxTx, it.toLong())
-            if(loadedLastId == factLastId) {
-                callback(mutableListOf(), null, false)
-                return@then
-            }
             if (factLastId > 0) {
+                if (loadedLastId == factLastId) {
+                    callback(mutableListOf(), null, true)
+                    return@then
+                }
                 iterateTransactions(option, mutableListOf(), owner, 0, factLastId, callback)
             } else {
                 callback(mutableListOf(), null, true)
