@@ -1,5 +1,6 @@
 # UsoamicKtJs
-KotlinJS library for interaction with Usoamic contract
+KotlinJS library for interaction with Usoamic contract.
+
 Move library to libs folder.
 
 ## Gradle Setup
