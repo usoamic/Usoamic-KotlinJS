@@ -1,4 +1,4 @@
-package io.usoamic.usoamickotlinjs.other
+package io.usoamic.usoamicktjs.other
 
 class Config {
     companion object {

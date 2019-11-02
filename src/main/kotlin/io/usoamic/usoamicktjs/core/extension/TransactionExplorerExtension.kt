@@ -1,7 +1,7 @@
-package io.usoamic.usoamickotlinjs.core.extension
+package io.usoamic.usoamicktjs.core.extension
 
-import io.usoamic.usoamickotlinjs.core.TransactionExplorer
-import io.usoamic.usoamickotlinjs.model.Transfer
+import io.usoamic.usoamicktjs.core.TransactionExplorer
+import io.usoamic.usoamicktjs.model.Transfer
 import io.usoamic.web3kt.core.contract.model.CallOption
 import kotlin.math.min
 
@@ -39,11 +39,11 @@ fun TransactionExplorer.getTransactionsByAddress(
     getNumberOfTransactionsByAddress(owner).call(option)
         .then {
             val factLastId = min(maxTx, it.toLong())
-            if(loadedLastId == factLastId) {
-                callback(mutableListOf(), null, false)
-                return@then
-            }
             if (factLastId > 0) {
+                if (loadedLastId == factLastId) {
+                    callback(mutableListOf(), null, true)
+                    return@then
+                }
                 iterateTransactions(option, mutableListOf(), owner, 0, factLastId, callback)
             } else {
                 callback(mutableListOf(), null, true)

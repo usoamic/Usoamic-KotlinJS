@@ -1,6 +1,6 @@
-package io.usoamic.usoamickotlinjs.model
+package io.usoamic.usoamicktjs.model
 
-import io.usoamic.usoamickotlinjs.enumcls.NoteVisibility
+import io.usoamic.usoamicktjs.enumcls.NoteVisibility
 import io.usoamic.web3kt.bignumber.BigNumber
 
 data class Note constructor(

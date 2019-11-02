@@ -1,6 +1,6 @@
-package io.usoamic.usoamickotlinjs.model
+package io.usoamic.usoamicktjs.model
 
-import io.usoamic.usoamickotlinjs.enumcls.VoteType
+import io.usoamic.usoamicktjs.enumcls.VoteType
 import io.usoamic.web3kt.bignumber.BigNumber
 
 data class Vote constructor(

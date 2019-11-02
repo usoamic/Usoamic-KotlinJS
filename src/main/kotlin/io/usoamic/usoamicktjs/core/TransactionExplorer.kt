@@ -1,6 +1,6 @@
-package io.usoamic.usoamickotlinjs.core
+package io.usoamic.usoamicktjs.core
 
-import io.usoamic.usoamickotlinjs.model.Transfer
+import io.usoamic.usoamicktjs.model.Transfer
 import io.usoamic.web3kt.core.contract.response.CallResponse
 
 interface TransactionExplorer : Purchases {

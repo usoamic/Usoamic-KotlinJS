@@ -1,6 +1,6 @@
-package io.usoamic.usoamickotlinjs.other
+package io.usoamic.usoamicktjs.other
 
-import io.usoamic.usoamickotlinjs.enumcls.NetworkType
+import io.usoamic.usoamicktjs.enumcls.NetworkType
 
 object Contract {
     fun forNetwork(networkType: NetworkType): String {
