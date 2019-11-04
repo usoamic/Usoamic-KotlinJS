@@ -11,20 +11,21 @@ private fun TransactionExplorer.iterateTransactions(
     owner: String,
     id: Long,
     endId: Long,
-    callback: (list: MutableList<Transfer>, t: Throwable?, needLoad: Boolean) -> Unit
+    lastTxId: Long,
+    callback: (list: MutableList<Transfer>, lastTxId: Long, t: Throwable?, needLoad: Boolean) -> Unit
 ) {
     getTransactionByAddress(owner, id.toString()).call(option)
         .then { tx ->
             list.add(tx)
             val nextId = (id - 1)
             if (nextId >= endId) {
-                iterateTransactions(option, list, owner, nextId, endId, callback)
+                iterateTransactions(option, list, owner, nextId, endId, lastTxId, callback)
             } else {
-                callback(list, null, true)
+                callback(list, lastTxId, null, true)
             }
         }
         .catch {
-            callback(mutableListOf(), it, false)
+            callback(mutableListOf(), lastTxId, it, false)
         }
 }
 
@@ -32,7 +33,7 @@ fun TransactionExplorer.getTransactionsByAddress(
     owner: String,
     maxTx: Long,
     loadedLastId: Long,
-    callback: (list: MutableList<Transfer>, t: Throwable?, hasUpdate: Boolean) -> Unit
+    callback: (list: MutableList<Transfer>, lastTxId: Long, t: Throwable?, needLoad: Boolean) -> Unit
 ) {
     val option = CallOption(from = owner)
 
@@ -43,15 +44,15 @@ fun TransactionExplorer.getTransactionsByAddress(
 
             if (lastId > 0) {
                 if (loadedLastId == lastId) {
-                    callback(mutableListOf(), null, false)
+                    callback(mutableListOf(), lastId, null, false)
                     return@then
                 }
-                iterateTransactions(option, mutableListOf(), owner, lastId, endId, callback)
+                iterateTransactions(option, mutableListOf(), owner, lastId, endId, lastId, callback)
             } else {
-                callback(mutableListOf(), null, true)
+                callback(mutableListOf(), lastId, null, true)
             }
         }
         .catch {
-            callback(mutableListOf(), it, false)
+            callback(mutableListOf(), 0, it, false)
         }
 }
