@@ -3,22 +3,22 @@ package io.usoamic.usoamicktjs.core.extension
 import io.usoamic.usoamicktjs.core.TransactionExplorer
 import io.usoamic.usoamicktjs.model.Transfer
 import io.usoamic.web3kt.core.contract.model.CallOption
-import kotlin.math.min
+import kotlin.math.max
 
 private fun TransactionExplorer.iterateTransactions(
     option: CallOption,
     list: MutableList<Transfer>,
     owner: String,
     id: Long,
-    lastId: Long,
+    endId: Long,
     callback: (list: MutableList<Transfer>, t: Throwable?, needLoad: Boolean) -> Unit
 ) {
     getTransactionByAddress(owner, id.toString()).call(option)
         .then { tx ->
             list.add(tx)
-            val nextId = (id + 1)
-            if (nextId < lastId) {
-                iterateTransactions(option, list, owner, nextId, lastId, callback)
+            val nextId = (id - 1)
+            if (nextId >= endId) {
+                iterateTransactions(option, list, owner, nextId, endId, callback)
             } else {
                 callback(list, null, true)
             }
@@ -38,13 +38,15 @@ fun TransactionExplorer.getTransactionsByAddress(
 
     getNumberOfTransactionsByAddress(owner).call(option)
         .then {
-            val factLastId = min(maxTx, it.toLong())
-            if (factLastId > 0) {
-                if (loadedLastId == factLastId) {
+            val lastId = it.toLong() - 1
+            val endId = max(lastId - (maxTx - 1), 0)
+
+            if (lastId > 0) {
+                if (loadedLastId == lastId) {
                     callback(mutableListOf(), null, false)
                     return@then
                 }
-                iterateTransactions(option, mutableListOf(), owner, 0, factLastId, callback)
+                iterateTransactions(option, mutableListOf(), owner, lastId, endId, callback)
             } else {
                 callback(mutableListOf(), null, true)
             }
