@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpackOutput.Target.COMMONJS
-
 buildscript {
     val kotlinVersion = "1.3.72"
 
@@ -36,13 +34,4 @@ dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 }
 
-kotlin {
-    target {
-        browser {
-            webpackTask {
-                output.libraryTarget = COMMONJS
-                //output.libraryTarget = "commonjs" // alternative
-            }
-        }
-    }
-}
+kotlin.target.browser {}
