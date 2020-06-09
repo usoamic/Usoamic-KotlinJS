@@ -16,7 +16,7 @@ dependencies {
 }
 ```
 
-## How To Build
+## How To Build Only Jar File
 1. Gradle
 2. usoamicktjs
 3. Tasks

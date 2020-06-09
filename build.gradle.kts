@@ -1,3 +1,13 @@
+object Version {
+    const val web3 = "^1.2.9"
+    const val bigNumberJs = "^9.0.0"
+    const val ethereumJsTx = "^1.3.7"
+    const val babelPolyFill = "^6.26.0"
+    const val ethereumJsWallet = "^0.6.3"
+    const val bip39 = "^3.0.2"
+    const val abiDecoder = "^2.3.0"
+}
+
 buildscript {
     val kotlinVersion = "1.3.72"
 
@@ -32,6 +42,14 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-js"))
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+
+    implementation(npm("web3", Version.web3))
+    implementation(npm("bignumber.js", Version.bigNumberJs))
+    implementation(npm("ethereumjs-tx", Version.ethereumJsTx))
+    implementation(npm("babel-polyfill", Version.babelPolyFill))
+    implementation(npm("ethereumjs-wallet", Version.ethereumJsWallet))
+    implementation(npm("bip39", Version.bip39))
+    implementation(npm("abi-decoder", Version.abiDecoder))
 }
 
 kotlin.target.browser {}
