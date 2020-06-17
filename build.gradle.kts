@@ -1,7 +1,14 @@
-import org.jetbrains.kotlin.gradle.frontend.KotlinFrontendExtension
+object Version {
+    const val web3 = "^1.2.9"
+    const val bigNumberJs = "^9.0.0"
+    const val ethereumJsTx = "^1.3.7"
+    const val ethereumJsWallet = "^0.6.3"
+    const val bip39 = "^3.0.2"
+    const val abiDecoder = "^2.3.0"
+}
 
 buildscript {
-    val kotlinVersion = "1.3.50"
+    val kotlinVersion = "1.3.72"
 
     repositories {
         jcenter()
@@ -11,19 +18,17 @@ buildscript {
 
     dependencies {
         classpath("org.jetbrains.kotlin", "kotlin-gradle-plugin", kotlinVersion)
-        classpath("org.jetbrains.kotlin", "kotlin-frontend-plugin", "0.0.45")
     }
 }
 
 allprojects {
     group = "io.usoamic"
-    version = "1.1.2"
+    version = "1.1.3"
 }
 
 plugins {
-    id("kotlin2js") version "1.3.50"
-    id("kotlin-dce-js") version "1.3.50"
-    id("org.jetbrains.kotlin.frontend") version "1.3.50"
+    val kotlinVersion = "1.3.72"
+    id("org.jetbrains.kotlin.js") version kotlinVersion
 }
 
 repositories {
@@ -34,22 +39,13 @@ repositories {
 }
 
 dependencies {
-    compile(kotlin("stdlib-js"))
-    compile(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
-}
+    implementation(kotlin("stdlib-js"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
 
-configure<KotlinFrontendExtension> {
-    downloadNodeJsVersion = "latest"
-}
-
-tasks {
-    compileKotlin2Js {
-        kotlinOptions {
-            metaInfo = true
-            sourceMap = false
-            moduleKind = "commonjs"
-            main = "call"
-            suppressWarnings = false
-        }
-    }
+    implementation(npm("web3", Version.web3))
+    implementation(npm("bignumber.js", Version.bigNumberJs))
+    implementation(npm("ethereumjs-tx", Version.ethereumJsTx))
+    implementation(npm("ethereumjs-wallet", Version.ethereumJsWallet))
+    implementation(npm("bip39", Version.bip39))
+    implementation(npm("abi-decoder", Version.abiDecoder))
 }
